@@ -1,0 +1,8 @@
+version: '3'
+services:
+  pet-shop:
+    build: ./
+    volumes:
+      - ./:/user/src/app
+    ports:
+      - 4000:8080
