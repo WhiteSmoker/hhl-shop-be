@@ -32,13 +32,12 @@ const ProductSchema = new Schema(
       {
         color: String,
         size: String,
-        amount: Number,
       },
     ],
-    // quantity: {
-    //   type: Number,
-    //   default: 0,
-    // },
+    amount: {
+      type: Number,
+      default: 0,
+    },
     categoryId: {
       type: Types.ObjectId,
       ref: "category",
