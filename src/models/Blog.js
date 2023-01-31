@@ -1,29 +1,31 @@
 const { Schema, model } = require("mongoose");
 
 const ImageSchema = new Schema({
-    publicId: String,
-    url: String,
+  publicId: String,
+  url: String,
 });
 
-const BlogSchema = new Schema({
-
+const BlogSchema = new Schema(
+  {
     title: {
-        type: String,
-        default: null
+      type: String,
+      default: null,
     },
-    url: {
-        type: String,
-        default: null
+    detail: {
+      type: String,
+      default: null,
     },
     image: {
-        type: ImageSchema,
-        default: null
-    }
-}, {
+      type: ImageSchema,
+      default: null,
+    },
+  },
+  {
     timestamps: true,
-    versionKey: false
-});
+    versionKey: false,
+  }
+);
 
 BlogSchema.index({ title: 1 });
 
-module.exports = model('blog', BlogSchema)
+module.exports = model("blog", BlogSchema);
