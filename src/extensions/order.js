@@ -21,7 +21,7 @@ module.exports.calculateOrder = async (data) => {
             ...p,
             ...doc._doc,
             _id: doc._id,
-            quantity: p.quantity,
+            amount: p.amount,
           });
         }
       });
