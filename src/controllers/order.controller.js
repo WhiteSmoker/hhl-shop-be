@@ -82,7 +82,6 @@ module.exports.create = async (req, res) => {
     const code = generateOrderCode(12);
 
     const calculatedOrder = await calculateOrder(req.body);
-
     if (calculatedOrder.error) {
       return res.status(400).json({
         success: false,
@@ -93,7 +92,7 @@ module.exports.create = async (req, res) => {
     // create order
     const order = new Order({
       code,
-      customer: calculatedOrder.customerId,
+      customerId: calculatedOrder.customerId,
       total: calculatedOrder.total,
       byDate: Date.now(),
       phoneNumber: req.body.phoneNumber,
@@ -111,7 +110,7 @@ module.exports.create = async (req, res) => {
         const orderDetail = new OrderDetail({
           orderId: newOrder._id,
           product: product._id,
-          productQuantity: product.quantity,
+          productAmount: product.amount,
           subTotal: product.subTotal,
           category: product.categoryId,
         });
