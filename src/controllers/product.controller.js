@@ -6,13 +6,19 @@ require("dotenv").config();
 
 module.exports.products = async (req, res) => {
   try {
-    const searchQuery = req.query.keyword
-      ? { name: { $regex: req.query.keyword, $options: "i" } }
-      : req.query.categoryId
-      ? {
-          categoryId: req.query.categoryId,
-        }
-      : {};
+    const searchQuery =
+      req.query.keyword && req.query.categoryId
+        ? {
+            name: { $regex: req.query.keyword, $options: "i" },
+            categoryId: req.query.categoryId,
+          }
+        : req.query.categoryId
+        ? {
+            categoryId: req.query.categoryId,
+          }
+        : req.query.keyword
+        ? { name: { $regex: req.query.keyword, $options: "i" } }
+        : {};
 
     const products = await Product.find({ ...searchQuery }).sort({
       createdAt: -1,
