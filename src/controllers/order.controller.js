@@ -164,7 +164,7 @@ module.exports.update = async (req, res) => {
 module.exports.getOrdersByUser = async (req, res) => {
   try {
     const orderQuery = new Pagination(
-      Order.find({ customer: req.params.id }).populate("customer", [
+      Order.find({ customerId: req.params.id }).populate("customer", [
         "username",
         "phoneNumber",
       ]),
@@ -174,7 +174,7 @@ module.exports.getOrdersByUser = async (req, res) => {
     const orders = await orderQuery.query.sort({ createdAt: -1 });
 
     const total = await Order.countDocuments({
-      customer: req.params.id,
+      customerId: req.params.id,
     });
 
     return res.status(200).json({
