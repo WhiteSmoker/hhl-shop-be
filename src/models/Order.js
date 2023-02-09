@@ -12,6 +12,10 @@ const OrderSchema = new Schema(
       ref: "user",
       required: true,
     },
+    customerName: {
+      type: String,
+      required: true,
+    },
     byDate: {
       type: Date,
       default: Date.now(),
@@ -20,6 +24,7 @@ const OrderSchema = new Schema(
       type: Number,
       default: 0,
     },
+
     phoneNumber: {
       type: String,
       default: null,
