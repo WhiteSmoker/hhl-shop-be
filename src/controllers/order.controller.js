@@ -13,7 +13,7 @@ module.exports.orders = async (req, res) => {
       : {};
 
     const orderQuery = new Pagination(
-      Order.find({ ...searchQuery }).populate("customer", [
+      Order.find({ ...searchQuery }).populate("customerId", [
         "username",
         "phoneNumber",
       ]),
@@ -43,7 +43,7 @@ module.exports.orders = async (req, res) => {
 
 module.exports.order = async (req, res) => {
   try {
-    const order = await Order.findById(req.params.id).populate("customer", [
+    const order = await Order.findById(req.params.id).populate("customerId", [
       "username",
       "phoneNumber",
       "email",
@@ -164,7 +164,7 @@ module.exports.update = async (req, res) => {
 module.exports.getOrdersByUser = async (req, res) => {
   try {
     const orderQuery = new Pagination(
-      Order.find({ customerId: req.params.id }).populate("customer", [
+      Order.find({ customerId: req.params.id }).populate("customerId", [
         "username",
         "phoneNumber",
       ]),
