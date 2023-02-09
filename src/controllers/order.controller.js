@@ -94,6 +94,7 @@ module.exports.create = async (req, res) => {
       code,
       customerId: calculatedOrder.customerId,
       total: calculatedOrder.total,
+      customerName: req.body.customerName,
       byDate: Date.now(),
       phoneNumber: req.body.phoneNumber,
       address: req.body.address,
