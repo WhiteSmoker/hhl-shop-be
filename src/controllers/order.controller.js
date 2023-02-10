@@ -170,7 +170,7 @@ module.exports.getOrdersByUser = async (req, res) => {
         "phoneNumber",
       ]),
       req.query
-    ).paginating();
+    );
 
     const orders = await orderQuery.query.sort({ createdAt: -1 });
 
