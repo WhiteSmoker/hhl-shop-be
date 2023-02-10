@@ -16,11 +16,6 @@ router.post("/", verifyToken, controller.create);
 
 router.put("/", verifyToken, verifyTokenAdmin, controller.update);
 
-router.get(
-  "/user/:id",
-  verifyToken,
-  verifyTokenAdmin,
-  controller.getOrdersByUser
-);
+router.get("/user/:id", verifyToken, controller.getOrdersByUser);
 
 module.exports = router;

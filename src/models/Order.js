@@ -24,7 +24,6 @@ const OrderSchema = new Schema(
       type: Number,
       default: 0,
     },
-
     phoneNumber: {
       type: String,
       default: null,
